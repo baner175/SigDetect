@@ -1,6 +1,3 @@
-Absolutely — here’s a README draft based on the package structure and exported functions in the repository.
-
-Copy this into your `README.md`:
 
 ```md
 # SigDetect
@@ -158,9 +155,3 @@ Project maintainer:
 - Aritra Banerjee
 - Email: baner175@umn.edu
 ```
-
-If you want, I can also make this:
-- more concise and GitHub-style
-- more academic and publication-style
-- add a real usage example tailored to a specific signal model
-- rewrite it to match a polished CRAN/Package README standard
