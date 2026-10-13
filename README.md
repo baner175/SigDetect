@@ -1,5 +1,3 @@
-
-```md
 # SigDetect
 
 SigDetect is an R package for signal detection and signal-proportion testing in one-dimensional data. The package provides methods for analyzing both binned and unbinned data, with or without a background-only sample, and includes utilities for sensitivity analysis and signal-region calculation.
@@ -154,4 +152,4 @@ Contributions and feedback are welcome. If you use this package for analysis or 
 Project maintainer:
 - Aritra Banerjee
 - Email: baner175@umn.edu
-```
+
