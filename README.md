@@ -1,8 +1,6 @@
 # SigDetect
 
-SigDetect is an R package for signal detection and signal-proportion testing in one-dimensional data. The package provides methods for analyzing both binned and unbinned data, with or without a background-only sample, and includes utilities for sensitivity analysis and signal-region calculation.
-
-The package is designed for settings where one wants to test whether a signal component is present above a modeled background, while accounting for uncertainty in the background model and using a flexible set of statistical routines.
+SigDetect is an R package for signal detection and signal-proportion testing in one-dimensional data built upon the theory of `Compensator Based Signal Detection'. The package provides methods for analyzing both binned and unbinned data, with or without a background-only sample, and includes utilities for sensitivity analysis and signal-region calculation (in the absence of a background-only sample). For further methodological details refer to the papers https://arxiv.org/abs/2605.20508 (for the unbinned data regime) and https://arxiv.org/abs/2607.06939 (for the binned data regime).
 
 ## Features
 
@@ -11,7 +9,7 @@ The package is designed for settings where one wants to test whether a signal co
 - Analyses with a background-only sample
 - Analyses without a background-only sample
 - Sensitivity analysis for diffused signal alternatives
-- Signal-region construction based on a cumulative distribution function
+- Signal-region construction based on a cumulative distribution function of the signal distribution
 
 ## Package structure
 
@@ -46,20 +44,29 @@ The package exports the following core functions:
 - `sensitivity_analysis()`
 - `signal_region()`
 
-These are designed to support signal-detection workflows in both background-aware and background-free settings.
+These are designed to support signal-detection workflows in both the settings where the background-only data is either accessible or it is not.
 
 ## Typical workflow
 
 A typical analysis follows this pattern:
 
-1. Define the signal density or cumulative distribution.
-2. Specify the benchmark background model.
+#### When a background-only data is available
+1. Define the signal density. The signal distribution should not depend on unknown parameters.
+2. Specify the proposal background density. This may or may not depend on some unknown parameters.
 3. Define the search region.
-4. Choose the analysis type:
-   - unbinned or binned
-   - with or without a background-only sample
-5. Run the appropriate detection function.
-6. Interpret the test statistic, p-value, confidence interval, and estimated signal proportion.
+4. Run the appropriate detection function:
+   i. sig_detect_unbinned_wbkg() if the data is unbinned
+   ii. sig_detect_binned_wbkg() if the data is binned
+7. Interpret the test statistic, p-value, confidence interval, and estimated signal proportion.
+
+#### When a background-only data is available
+1. Define the signal density and cumulative distribution function. The signal distribution should not depend on unknown parameters.
+2. Specify the proposal background density. This must depend on some unknown parameter.
+3. Define the search region.
+4. Run the appropriate detection function:
+   i. sig_detect_unbinned_wobkg() if the data is unbinned
+   ii. sig_detect_binned_wobkg() if the data is binned
+7. Interpret the test statistic, p-value, confidence interval, and estimated signal proportion.
 
 ## Example usage
 
